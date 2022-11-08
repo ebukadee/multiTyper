@@ -1,0 +1,25 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080808e8;
+}
+
+#container{
+    margin: auto; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: calc(20vh/2);
+    max-width: 600px;
+}
+.square{
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    background-color: #080808b5;
+    box-shadow: ;
+}
