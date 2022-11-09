@@ -1,11 +1,30 @@
 const container = document.getElementById("container");
+const arr = [];
 for (let i = 0; i < 100; i++) {
   const square = document.createElement("div");
   square.classList.add("square");
 
   container.appendChild(square);
+  arr.push(square);
+}
+// function randomise(elem) {
+//   const rand = Math.floor(Math.random() * elem.length);
+//   const theDiv = elem[rand];
+//   highLight(theDiv);
+// }
+function highLight(dark) {
+  dark.forEach((drk) => {
+    drk.style.background = "blue";
+  });
 }
 
+setInterval(highLight(arr), 20000);
+
+// arr.forEach((div) => {
+//   div.addEventListener("click", (e) => {
+//     highLight(div);
+//   });
+// });
 
 // // function to sign into our data base to read and write data
 
