@@ -6,18 +6,6 @@ for (let i = 0; i < 100; i++) {
   container.appendChild(square);
 }
 
-// function makeDivs() {
-//   let arr = [];
-//   let result = "";
-//   for (let i = 0; i < 8; i++) {
-//     for (let j = 0; j < 7; j++) {
-//       result += "<div></div>";
-//       arr.push(result);
-//     }
-//     return arr;
-//   }
-// }
-// console.log(makeDivs());
 
 // // function to sign into our data base to read and write data
 
