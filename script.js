@@ -7,18 +7,30 @@ for (let i = 0; i < 100; i++) {
   container.appendChild(square);
   arr.push(square);
 }
-// function randomise(elem) {
-//   const rand = Math.floor(Math.random() * elem.length);
-//   const theDiv = elem[rand];
-//   highLight(theDiv);
-// }
+// return a random
+function randomise(elem) {
+  const rand = Math.floor(Math.random() * elem.length);
+  const theDiv = elem[rand];
+  highLight(theDiv);
+}
 function highLight(dark) {
-  dark.forEach((drk) => {
-    drk.style.background = "blue";
-  });
+  dark.style.background = "#24e44e";
+  setTimeout(() => {
+    dark.style.background = "#080808e8";
+  }, 1000);
 }
 
-setInterval(highLight(arr), 20000);
+setInterval(() => {
+  randomise(arr);
+}, 1000);
+
+// randomise(arr);
+
+// setInterval(() => {
+//   randomise(arr);
+// }, 500);
+
+// setInterval(highLight(arr), 20000);
 
 // arr.forEach((div) => {
 //   div.addEventListener("click", (e) => {
