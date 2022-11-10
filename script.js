@@ -1,10 +1,14 @@
 const container = document.getElementById("container");
+const boxes = document.getElementById("boxes");
+const number = document.getElementById("number");
+let realNum = number.innerHTML;
+
 const arr = [];
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 50; i++) {
   const square = document.createElement("div");
   square.classList.add("square");
 
-  container.appendChild(square);
+  boxes.appendChild(square);
   arr.push(square);
 }
 // return a random
@@ -15,8 +19,10 @@ function randomise(elem) {
 }
 function highLight(dark) {
   dark.style.background = "#24e44e";
+  dark.classList.add("filled");
   setTimeout(() => {
-    dark.style.background = "#080808e8";
+    dark.style.background = "";
+    dark.classList.remove("filled");
   }, 1000);
 }
 
@@ -24,19 +30,14 @@ setInterval(() => {
   randomise(arr);
 }, 1000);
 
-// randomise(arr);
-
-// setInterval(() => {
-//   randomise(arr);
-// }, 500);
-
-// setInterval(highLight(arr), 20000);
-
-// arr.forEach((div) => {
-//   div.addEventListener("click", (e) => {
-//     highLight(div);
-//   });
-// });
+arr.forEach((div) => {
+  div.addEventListener("click", (e) => {
+    if (div.classList.contains("filled")) {
+      realNum++;
+      number.innerHTML = realNum
+    }
+  });
+});
 
 // // function to sign into our data base to read and write data
 
