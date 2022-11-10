@@ -4,8 +4,8 @@ const number = document.getElementById("number");
 let realNum = number.innerHTML;
 
 const arr = [];
-for (let i = 0; i < 50; i++) {
-  const square = document.createElement("div");
+for (let i = 0; i < 25; i++) {
+  const square = document.createElement("button");
   square.classList.add("square");
 
   boxes.appendChild(square);
@@ -31,13 +31,19 @@ setInterval(() => {
 }, 1000);
 
 arr.forEach((div) => {
-  div.addEventListener("click", (e) => {
+  div.addEventListener("click", () => {
     if (div.classList.contains("filled")) {
       realNum++;
-      number.innerHTML = realNum
+      number.innerHTML = realNum;
+      div.style.background = "";
     }
   });
 });
+// arr.forEach(()=>{
+//   div.addEventListener('')
+// })
+
+console.log(window);
 
 // // function to sign into our data base to read and write data
 

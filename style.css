@@ -19,13 +19,11 @@ body {
   color: #24e44e;
   font-family: Segoe UI;
 }
-#count h3{
-    text-transform: uppercase;
-    color: #24e44e;
-    font-family: Segoe UI;
-    font-size: 100px;
-
-
+#count h3 {
+  text-transform: uppercase;
+  color: #24e44e;
+  font-family: Segoe UI;
+  font-size: 100px;
 }
 
 #boxes {
@@ -35,11 +33,17 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: calc(20vh / 2);
-  max-width: 500px;
+  max-width: 600px;
 }
 .square {
-  height: 50px;
-  width: 50px;
-  margin: 5px;
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+  border-radius: 10px;
   background-color: #080808b5;
+  box-shadow: 0px 15px 0px #080808e4;
+}
+.square:active {
+  box-shadow: 0px 0px 1px #080808e4;
+  transform: translateY(10px);
 }
