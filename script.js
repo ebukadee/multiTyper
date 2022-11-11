@@ -3,8 +3,17 @@ const boxes = document.getElementById("boxes");
 const number = document.getElementById("number");
 let realNum = number.innerHTML;
 
+const emo = ["😁", "👀", "🤣", "🙏", "😘", "😢", "😒", "🤦‍♀️", "🤷‍♂️", "🥱", "😆"];
+let theEm;
+
+function randEmo(elem) {
+  const rand = Math.floor(Math.random() * elem.length);
+  theEm = elem[rand];
+  return theEm;
+}
+
 const arr = [];
-for (let i = 0; i < 25; i++) {
+for (let i = 0; i < 16; i++) {
   const square = document.createElement("button");
   square.classList.add("square");
 
@@ -23,15 +32,18 @@ function highLight(dark) {
   setTimeout(() => {
     dark.style.background = "";
     dark.classList.remove("filled");
-  }, 1000);
+  }, 700);
 }
 
 setInterval(() => {
   randomise(arr);
-}, 1000);
+}, 700);
 
 arr.forEach((div) => {
   div.addEventListener("click", () => {
+    randEmo(emo);
+
+    div.innerHTML = `<h1>${theEm}</h1>`;
     if (div.classList.contains("filled")) {
       realNum++;
       number.innerHTML = realNum;
@@ -39,47 +51,42 @@ arr.forEach((div) => {
     }
   });
 });
-// arr.forEach(()=>{
-//   div.addEventListener('')
-// })
 
-console.log(window);
+// function to sign into our data base to read and write data
 
-// // function to sign into our data base to read and write data
+function newFunction() {
+  //initializing the player unique id
+  let playerId;
+  let playerRef;
 
-// function newFunction() {
-//   //initializing the player unique id
-//   let playerId;
-//   let playerRef;
+  firebase
+    .auth()
+    .signInAnonymously()
+    //if the authentication fails we add and error
+    .catch((error) => {
+      //the error methods
+      error.code & error.message;
+    });
 
-//   firebase
-//     .auth()
-//     .signInAnonymously()
-//     //if the authentication fails we add and error
-//     .catch((error) => {
-//       //the error methods
-//       error.code & error.message;
-//     });
+  // checking if the user authentication occured
+  firebase.auth.onAuthStateChanged((user) => {
+    if (user) {
+      //logged in
+      //setting the player unique id
+      playerId = user.uid;
+      //setting the player ref to be added to its own node in the database
 
-//   // checking if the user authentication occured
-//   firebase.auth.onAuthStateChanged((user) => {
-//     if (user) {
-//       //logged in
-//       //setting the player unique id
-//       playerId = user.uid;
-//       //setting the player ref to be added to its own node in the database
-
-//       playerRef = firebase.database.ref(`players/${playerId}`);
-//       //setting the player's default object state of the node in the database
-//       playerRef.set({
-//         name: "",
-//         direction: "",
-//         color: "",
-//         x: "",
-//       });
-//       playerRef.onDisconnect().remove();
-//     } else {
-//       //you're logged out
-//     }
-//   });
-// }
+      playerRef = firebase.database.ref(`players/${playerId}`);
+      //setting the player's default object state of the node in the database
+      playerRef.set({
+        name: "",
+        direction: "",
+        color: "",
+        x: "",
+      });
+      playerRef.onDisconnect().remove();
+    } else {
+      //you're logged out
+    }
+  });
+}
