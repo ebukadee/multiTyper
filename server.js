@@ -1,6 +1,4 @@
-const io = require('socket.io')
+const io = require('socket.io')()
 
 
-io.on('connecton', (msg)=>{
-    console.log('someone connected')
-})
+io.on
