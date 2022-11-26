@@ -1,4 +1,7 @@
-const io = require('socket.io')
+const io = require("socket.io")();
 
+io.on("connection", (client) => {
+  client.emit("init", { data: "hello world" });
+});
 
-console.log(io)
+io.listen(3000);

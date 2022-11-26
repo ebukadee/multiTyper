@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ebukadee/multiTyper#readme",
   "dependencies": {
+    "nodemon": "^2.0.20",
     "socket.io": "^4.5.3"
   }
 }
